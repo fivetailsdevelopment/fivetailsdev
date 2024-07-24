@@ -1,0 +1,6 @@
+title: Five Tails Development
+description: Hosting site for testing new pages and apps
+
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+- jekyll-remote-theme # add this line to the plugins list if you already have one

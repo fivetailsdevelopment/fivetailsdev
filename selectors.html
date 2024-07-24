@@ -1,0 +1,150 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<link href="resources/css/styles.css" rel="stylesheet" type="text/css">
+	<title>CSS Selectors</title>
+</head>
+
+<body>
+	<!--Header section goes here-->
+	<header class="navbar">
+		<nav class="firstrow">
+			<ul class="leftside">
+				<li class="logo"><img src="./resources/images/FiveTails_Logo_small.png" alt="Five Tails Development"/></li>
+				<li>Main Page</li>
+				<li>About</li>
+			</ul>
+			<ul class="rightside">
+			  <div><a href="https://www.linkedin.com/in/jameshohnen/" target="_blank"><img src="resources/images/linkedin.png" width="512" height="512" alt=""/></a></div>
+				<div><a href="mailto:funky_james@hotmail.com"><img src="./resources/images/Email_icon.png" alt="email"/></a></div>
+			</ul>
+		</nav>
+		<nav class="secondrow">
+			<ul>
+				<li><a href="#idSelectors">Selectors</a></li>
+				<li><a href="#idSpecificity">Specificity</a></li>
+				<li><a href="#idChaining">Chaining</a></li>
+				<li><a href="#idDescendentCombinator">Descendant Combinator</a></li>
+				<li><a href="#idMultipleSelectors">Multiple Selectors</a></li>
+			</ul>
+		</nav>
+		<title></title>
+	</header>
+
+		<!--Main section goes here-->
+	<main>
+		<div class="pagetitle">
+			<h1 class="title">Working With Selectors</h1>
+		</div>
+		<section class="Selectors"  id="idSelectors">
+			<h2>Selectors</h2>
+			<table>
+				<thead>
+					<tr class="firsttablerow">
+						<th class="firstcol">Selector
+						</th>
+						<th class="secondcol">Structure
+						</th>
+						<th class="thirdcol">Description &amp; Use Case
+						</th>
+						<th class="fourthcol">Notes
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="firstcol">Type</td>
+						<td class="secondcol">&lt;type&gt;<br />
+							type { }</td>
+						<td class="thirdcol">Mathces the type of the element in the HTML document.</td>
+						<td class="fourthcol">Unless specified otherwise in the CSS file, browser, or 'user agent', will apply default formatting to these tags.</td>
+					</tr>
+					<tr>
+						<td class="firstcol">Universal</td>
+						<td class="secondcol">* { }</td>
+						<td class="thirdcol">Applies to everything on the page</td>
+						<td class="fourthcol">Usually placed at the top of the CSS file</td>
+					</tr>
+					<tr>
+						<td class="firstcol">Class</td>
+						<td class="secondcol">&lt;h1 <strong>class="class1"</strong>&gt;<br />
+							.class1 { }</td>
+						<td class="thirdcol">Applies to a specific class as defined in the HTML. Classes can be used multiple times.</td>
+						<td class="fourthcol">One of the most common ways to select an element.</td>
+					</tr>
+					<tr>
+						<td class="firstcol">Multiple classes</td>
+						<td class="secondcol">&lt;h1 <strong>class="class1 class2"</strong>&gt;<br />
+							.class1 { }<br />
+							.class2 { }</td>
+						<td class="thirdcol">Applying multiple classes to an HTML element.</td>
+						<td class="fourthcol">Can be used to apply further enhancements to specific elements in a particular class.</td>
+					</tr>
+					<tr>
+						<td class="firstcol">ID</td>
+						<td class="secondcol">&lt;span <strong>id="id1"</strong>&gt;<br />
+							#id1 { }</td>
+						<td class="thirdcol">Applies to a specific ID as defined in the HTML. Unlike classes, IDs can be only be used once.</td>
+						<td class="fourthcol">Very hard to override. Best practice recommends avoiding using ID unless absolutely necessary.</td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</section>
+		<section class="Specificity" id="idSpecificity">
+			<h2>Specificity</h2>
+			<p>Specificity is the order by which the browser decides which CSS styles will be displayed. A best practice in CSS is to style elements while using the lowest degree of specificity so that if an element needs a new style, it is easy to override.</p>
+			<p>In order of least specific to most specific:</p>
+			<table>
+				<tr>
+					<td class="sequencebox">type</td>
+					<td class="sequenceindicator">&#8594;</td>
+					<td class="sequencebox">class</td>
+					<td class="sequenceindicator">&#8594;</td>
+					<td class="sequencebox">chain</td>
+					<td class="sequenceindicator">&#8594;</td>
+					<td class="sequencebox">ID</td>
+				</tr>
+			</table>
+		</section>
+		<section class="Chaining" id="idChaining">
+			<h2>Chaining</h2>
+			<p>When writing CSS rules, it’s possible to require an HTML element to have two or more CSS selectors at the same time.
+			<p>This is done by combining multiple selectors, which we will refer to as chaining. For instance, if there was a special class for &lt;h1&gt; elements, the CSS would look like below:</p>
+			<p class="code">
+				h1.special {<br />
+				&nbsp;&nbsp;color: blue;<br />
+				}
+			</p>
+</p>
+		</section>
+		<section class="Descendentcombinator"  id="idDescendentCombinator">
+			<h2>Descendent Combinators</h2>
+			<p>Selecting elements that are nested within other HTML elements. For example,</p>
+			<p class="code">
+				.class1 li {<br />
+				&nbsp;&nbsp;font-weight: bold;<br />
+				}
+			</p>
+		</section>
+		<section class="MultipleSelectors" id="idMultipleSelectors">
+			<h2>Multiple Selectors</h2>
+			<p>Allows you to be more efficient in your code by appling the same style to multiple selectors at one time.</p>
+			<p class="code">
+				h1,<br />
+				.class1,<br />
+				#id1 {<br />
+				&nbsp;&nbsp;font-family: Tahoma;<br />
+				}
+			</p>			
+		</section>
+	</main>
+	
+	<!--Footer section goes here-->
+	<footer>
+	
+	</footer>
+</body>
+</html>
