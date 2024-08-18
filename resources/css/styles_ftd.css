@@ -331,11 +331,6 @@ nav ul li a:hover {
 }
 
 
-
-
-
-
-
   @media (prefers-reduced-motion: no-preference) {
     .track-animate {
       animation: track-line-expand 1 2s ease-in-out forwards;
