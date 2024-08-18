@@ -272,29 +272,52 @@ nav ul li a:hover {
   justify-content: center;
 }
 
+.pCard-one img,
+.pCard-two img,
+.pCard-three img
+{
+  width:120%;
+  object-fit: cover;
+}
+
+/* === Card 1 === */
 .pCard-one {
   grid-area: 2 / 2 / 3 / 3;
   z-index: 1;
 }
 
-.pCard-one img{
-  width:120%;
-  object-fit: cover;
+.pLabel-one {
+  grid-area: 3 / 2 / 4 / 3;
 }
 
+/* === Card 2 === */
 .pCard-two {
   grid-area: 2 / 3 / 3 / 4;
   z-index: 1;
 }
 
+.pLabel-two {
+  grid-area: 3 / 3 / 4 / 4;
+}
+
+/* === Card 3 === */
 .pCard-three {
   grid-area: 4 / 2 / 5 / 3;
   z-index: 1;
 }
 
+.pLabel-three {
+  grid-area: 5 / 2 / 6 / 3;
+}
+
+/* === Card 4 === */
 .pCard-four {
   grid-area: 4 / 3 / 5 / 4;
   z-index: 1;
+}
+
+.pLabel-four {
+  grid-area: 5 / 3 / 6 / 4;
 }
 
 .portfolio-labels {
@@ -307,9 +330,11 @@ nav ul li a:hover {
   opacity: 0%;
 }
 
-.pLabel-one {
-  grid-area: 3 / 2 / 4 / 3;
-}
+
+
+
+
+
 
   @media (prefers-reduced-motion: no-preference) {
     .track-animate {
