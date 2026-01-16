@@ -1,105 +1,122 @@
 /* CSS Variables */
 :root {
---color-gunmetal-grey: hsla(209, 3%, 52%, 1);
---color-metallc-crimson: hsla(0, 100%, 11%, 1);
---color-metallic-blue: hsla(205, 28%, 43%, 1);
---color-off-white: hsla(0, 0%, 98%, 1);
---color-metallic-copper: hsla(8, 59%, 27%, 1);
---color-dark-grey: hsla(209, 1%, 20%, 1);
---color-light-crimson: hsla(0, 70%, 29%, 1);
---color-blue-grey: hsla(213, 35%, 70%, 1);
---color-metallic-gold: hsla(42, 61%, 48%, 1);
+  --color-gunmetal-grey: hsla(209, 3%, 52%, 1);
+  --color-metallc-crimson: hsla(0, 100%, 11%, 1);
+  --color-metallic-blue: hsla(205, 28%, 43%, 1);
+  --color-off-white: hsla(0, 0%, 98%, 1);
+  --color-metallic-copper: hsla(8, 59%, 27%, 1);
+  --color-dark-grey: hsla(209, 1%, 20%, 1);
+  --color-light-crimson: hsla(0, 70%, 29%, 1);
+  --color-blue-grey: hsla(213, 35%, 70%, 1);
+  --color-metallic-gold: hsla(42, 61%, 48%, 1);
 }
 
 @font-face {
   font-family: Elianto;
-  src: url(./fonts/Elianto-Regular.ttf) format('truetype'),
-        url(./fonts/Elianto-Regular.otf) format('opentype');
+  src: url(./fonts/Elianto-Regular.ttf) format("truetype"),
+    url(./fonts/Elianto-Regular.otf) format("opentype");
+}
+
+/* Basic layout safety */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 96px; /* stops fixed nav obscuring anchors */
 }
 
 /* ============== HEADER (first screen) ============== */
 
 #backgroundVideo {
-	  position: absolute;
-    width: 100%;
-	  height: 100vh;
-	  z-index: -1;
-    object-fit: cover
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  object-fit: cover;
 }
 
 #header {
-    height: 100vh;
-    width: 100%;
-    background-color: hsla(209, 1%, 20%, 0.5);
-    display: grid;
-    grid-template-columns: 1fr 2fr 3fr 2fr 1fr;
-    grid-template-rows: 1fr 2fr 3fr 2fr 1fr;
+  height: 100vh;
+  width: 100%;
+  background-color: hsla(209, 1%, 20%, 0.5);
+  display: grid;
+  grid-template-columns: 1fr 2fr 3fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr 3fr 2fr 1fr;
 }
 
 .logo-video {
-  height: 800px;
-  width: 800px;
+  width: min(80vmin, 800px);
+  height: auto;
+  aspect-ratio: 1 / 1;
   grid-area: 3 / 3 / 4 / 4;
   z-index: 1;
-  margin:auto;
+  margin: auto;
 }
 
+/* NAV */
 nav {
   position: fixed;
-  right:0px;
-  top: 5px;
-  width: 100vw;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 10;
+
+  /* subtle readability help over the video */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  backdrop-filter: blur(3px);
+}
+
+.nav-logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .nav-logo {
-    height: 80px;
-    cursor: pointer;
-    margin-left: 20px;
+  height: 80px;
+  cursor: pointer;
+  margin-left: 0;
 }
 
 .nav-menu {
-    display: inline-flex;
-    margin-right: 20px;
-    gap: 2rem;
+  display: inline-flex;
+  margin-right: 0;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 nav ul li a {
-  font-family: 'Raleway', Helvetica, sans-serif;
-    color: var(--color-off-white);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.scroll-reveal {
-  position:absolute;
-  right: 0px;
-  top: 195vh;
-  color: aqua;
-}
-.whiteBackground li a{
-  color: black;
+  font-family: "Raleway", Helvetica, sans-serif;
+  color: var(--color-off-white);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 nav ul li a:hover {
-    font-weight: 600;
+  font-weight: 600;
 }
 
-.logo-container {
-    grid-area: 2 / 2 / 5 / 5;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 0;
+/* existing hook for your JS if you use it */
+.whiteBackground li a {
+  color: black;
 }
 
-.ftd-logo {
-    height: 80vmin;
-
+.scroll-reveal {
+  position: absolute;
+  right: 0px;
+  top: 195vh;
+  color: aqua;
 }
 
 .ftd-company-name {
@@ -112,46 +129,36 @@ nav ul li a:hover {
 
 .ftd-company-name h1 {
   text-align: center;
-  font-family: 'Elianto', serif;
-  font-size: 8rem;
+  font-family: "Elianto", serif;
+  font-size: clamp(3rem, 10vw, 8rem);
 }
 
 .ftd-company-name h2 {
   text-align: center;
-  font-family: 'Raleway', Helvetica, sans-serif;
-  font-size: 4rem;
+  font-family: "Raleway", Helvetica, sans-serif;
+  font-size: clamp(1.6rem, 5vw, 4rem);
 }
-  
-  /* @media (prefers-reduced-motion: no-preference) {
-    .ftd-logo {
-      animation: ftd-logo-rotate 1 5s linear;
-    }
-  }
-    
-  @keyframes ftd-logo-rotate {
-    to {
-      transform: rotateY(360deg);
-    }
-  } */
 
-  /* ============== ABOUT SECTION ============== */
+/* ============== ABOUT SECTION ============== */
 
 .about {
-    height: 100vh;
-    width: 100%;
-    background-color: var(--color-off-white);
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--color-off-white);
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  padding: 0 18px; /* gives breathing room on mobile */
 }
 
 .about-left {
   display: inline-flex;
   flex-direction: column;
-  max-height:50vh;
-  min-width:400px;
+  max-height: 50vh;
+  min-width: 0; /* IMPORTANT: lets it shrink on phones */
+  flex: 1 1 320px;
   justify-content: center;
   margin-bottom: 8%;
 }
@@ -162,31 +169,31 @@ nav ul li a:hover {
   justify-content: end;
   padding-right: 20px;
   padding-bottom: 5px;
-  font-family: 'Elianto', serif;
-  /* font-size: 6rem; */
-  font-size: 5vw
+  font-family: "Elianto", serif;
+  font-size: clamp(2.6rem, 9vw, 4.5rem);
 }
 
 .about-right {
   display: flex;
   flex-shrink: 1;
   flex-direction: column;
-  min-height:50vh;
-  max-width:50%;
+  min-height: 50vh;
+  width: min(90vw, 560px);
   justify-content: center;
-  margin-top: 8%
+  margin-top: 8%;
 }
 
 .about-right p {
   padding-bottom: 20px;
-  font-size: 1.5rem;
+  font-size: clamp(1.05rem, 2.6vw, 1.5rem);
   line-height: 1.2;
-  font-family: 'Raleway', Helvetica, sans-serif;
+  font-family: "Raleway", Helvetica, sans-serif;
 }
 
 @media only screen and (max-width: 799px) {
   .about {
-    align-items:stretch;
+    align-items: stretch;
+    padding-top: 30px;
   }
 
   .about-left {
@@ -194,10 +201,16 @@ nav ul li a:hover {
     justify-content: end;
   }
 
+  .about-left h2 {
+    justify-content: flex-start;
+    padding-right: 0;
+  }
+
   .about-right {
     margin-top: 0;
-    padding-top: 20px;
+    padding-top: 12px;
     justify-content: start;
+    min-height: auto;
   }
 }
 
@@ -206,180 +219,7 @@ nav ul li a:hover {
   font-weight: 700;
 }
 
-
-
-
-  /* ============== PORTFOLIO SECTION ============== */
-
-.portfolio {
-  height: 100vh;
-  width: 100%;
-  background-color: var(--color-dark-grey);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  align-items: center;
-  justify-items: center;
-}
-
-.portfolio h2 {
-  font-family: 'Elianto', serif;
-  font-size: 5vh;
-  color: var(--color-off-white);
-  width: 100%;
-  text-align: left;
-  padding-left:30px;
-}
-
-.track-line {
-  border-bottom: 5px solid white;
-}
-
-
-.first-track-line {
-  grid-area: 2 / 1 / 3 / 5;
-}
-
-
-.second-track-line {
-  grid-area: 4 / 1 / 5 / 5;
-}
-
-
-.portfolio-cards {
-  width: 0%;
-  height: 0%;
-  border: 5px solid white;
-  border-radius: 50%;
-  border-color: azure;
-  background-color: var(--color-light-crimson);
-  justify-items: center;
-  align-items: center;
-  display:flex;
-  overflow: hidden;
-}
-
-.portfolio-card-content {
-  display: flex;
-  border-radius: 50%;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  opacity: 0%;
-}
-
-.portfolio-card-content a {
-  display:flex;
-  justify-content: center;
-}
-
-.pCard-one img,
-.pCard-two img,
-.pCard-three img
-{
-  width:120%;
-  object-fit: cover;
-}
-
-/* === Card 1 === */
-.pCard-one {
-  grid-area: 2 / 2 / 3 / 3;
-  z-index: 1;
-}
-
-.pLabel-one {
-  grid-area: 3 / 2 / 4 / 3;
-}
-
-/* === Card 2 === */
-.pCard-two {
-  grid-area: 2 / 3 / 3 / 4;
-  z-index: 1;
-}
-
-.pLabel-two {
-  grid-area: 3 / 3 / 4 / 4;
-}
-
-/* === Card 3 === */
-.pCard-three {
-  grid-area: 4 / 2 / 5 / 3;
-  z-index: 1;
-}
-
-.pLabel-three {
-  grid-area: 5 / 2 / 6 / 3;
-}
-
-/* === Card 4 === */
-.pCard-four {
-  grid-area: 4 / 3 / 5 / 4;
-  z-index: 1;
-}
-
-.pLabel-four {
-  grid-area: 5 / 3 / 6 / 4;
-}
-
-.portfolio-labels {
-  color: var(--color-off-white);
-  font-family: 'Raleway', Helvetica, sans-serif;
-  font-weight: 700;
-  font-size: 1.2rem;
-  text-align: center;
-  line-height: 1.2;
-  opacity: 0%;
-}
-
-
-  @media (prefers-reduced-motion: no-preference) {
-    .track-animate {
-      animation: track-line-expand 1 2s ease-in-out forwards;
-    }
-
-    .card-animate {
-      animation: card-appear 1 3s ease-in-out forwards;
-    }
-
-    .content-animate {
-      animation: content-appear 1 2s linear forwards;
-      animation-delay: 3s;
-    }
-
-  }
-    
-  @keyframes track-line-expand {
-    from {
-      width: 0%;
-    }
-    to {
-      width:100%;
-    }
-  }
-
-  @keyframes card-appear {
-    from {
-      width: 0%;
-      height: 0%;
-    }
-    to {
-      width:200px;
-      height: 200px;
-      transform: rotateX(360deg);
-    }
-  }
-
-  @keyframes content-appear {
-    from {
-      opacity: 0%;
-    }
-    to {
-      opacity: 100%;
-    }
-  }
-
-
-  /* ============== CONTACT SECTION ============== */
+/* ============== CONTACT SECTION ============== */
 
 .contact {
   height: 100vh;
@@ -388,12 +228,13 @@ nav ul li a:hover {
   display: grid;
   grid-template-rows: repeat(7, 1fr);
   grid-template-columns: repeat(7, 1fr);
+  padding: 0 18px;
 }
 
 .contact-section-title {
   grid-area: 3 / 3 / 4 / 6;
   color: var(--color-off-white);
-  font-family: 'Elianto', serif;
+  font-family: "Elianto", serif;
   font-size: 2rem;
   text-align: center;
   align-content: center;
@@ -402,19 +243,20 @@ nav ul li a:hover {
 .location {
   grid-area: 4 / 2 / 5 / 7;
   color: var(--color-off-white);
-  font-family: 'Raleway', Helvetica, sans-serif;
-  font-size: 4rem;
+  font-family: "Raleway", Helvetica, sans-serif;
+  font-size: clamp(1.8rem, 7vw, 4rem);
   text-align: center;
   align-content: center;
 }
 
 .email-address {
-  grid-area: 5 / 3 / 6 / 6;
+  grid-area: 5 / 2 / 6 / 7;
   color: var(--color-off-white);
-  font-family: 'Raleway', Helvetica, sans-serif;
-  font-size: 2rem;
+  font-family: "Raleway", Helvetica, sans-serif;
+  font-size: clamp(1.1rem, 4vw, 2rem);
   text-align: center;
   align-content: center;
+  word-break: break-word;
 }
 
 .email-address a {
@@ -423,16 +265,35 @@ nav ul li a:hover {
   cursor: pointer;
 }
 
-  /* ============== FOOTER ============== */
+/* ============== FOOTER ============== */
 
-  footer {
-    background-color: var(--color-dark-grey);
-    justify-items: center;
-    align-content: center;
-    color: var(--color-six);
-    font-family: 'Raleway', Helvetica, sans-serif;
-    font-size: 16px;
-    text-align: center;
-    color: var(--color-off-white);
-    padding-bottom: 10px;
+footer {
+  background-color: var(--color-dark-grey);
+  justify-items: center;
+  align-content: center;
+  font-family: "Raleway", Helvetica, sans-serif;
+  font-size: 16px;
+  text-align: center;
+  color: var(--color-off-white);
+  padding: 12px 0 18px;
+}
+
+/* ============== MOBILE NAV TWEAKS ============== */
+
+@media (max-width: 640px) {
+  nav {
+    padding: 8px 12px;
   }
+
+  .nav-logo {
+    height: 44px;
+  }
+
+  .nav-menu {
+    gap: 0.9rem;
+  }
+
+  nav ul li a {
+    font-size: 0.85rem;
+  }
+}
